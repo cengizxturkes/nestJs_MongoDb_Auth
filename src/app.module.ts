@@ -7,11 +7,14 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [AuthModule,
-    ConfigModule.forRoot({ isGlobal: true }),
+  imports: [
     MongooseModule.forRoot("mongodb://localhost/nestjs-mongodb-auth")
+    ,
+    ConfigModule.forRoot({ isGlobal: true }),
+
+    AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService, AuthService],
+  providers: [AppService],
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Token, TokenSchema, UserSchema } from './schemas';
+import { Token, TokenSchema, User, UserSchema } from './schemas';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './strategy';
@@ -9,11 +9,11 @@ import { JwtStrategy } from './strategy';
 @Module({
   imports: [
     MongooseModule.forFeature([{
-      name: "User",
+      name: User.name,
       schema: UserSchema,
     },
     {
-      name: "Token",
+      name: Token.name,
       schema: TokenSchema
     }
     ]
